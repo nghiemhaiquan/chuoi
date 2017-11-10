@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,7 +15,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'role',
+        'enabled',
+        'facebook_id',
     ];
 
     /**
@@ -24,6 +29,17 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
+
+    public function rates()
+    {
+        return $this->hasMany(Rate::Class);
+    }
+    
+    public function playlists()
+    {
+        return $this->hasMany(Playlist::Class);
+    }
 }
