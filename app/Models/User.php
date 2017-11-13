@@ -37,7 +37,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Rate::Class);
     }
-    
+
     public function playlists()
     {
         return $this->hasMany(Playlist::Class);
