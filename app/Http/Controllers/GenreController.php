@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Song;
 
-class SongController extends Controller
+class GenreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class SongController extends Controller
      */
     public function index()
     {
-        return view('admin.song.list');
+        return view('admin.genre.list');
     }
 
     /**
@@ -24,7 +23,7 @@ class SongController extends Controller
      */
     public function create()
     {
-        return view('admin.song.add');
+        return view('admin.genre.add');
     }
 
     /**
@@ -57,7 +56,7 @@ class SongController extends Controller
      */
     public function edit()
     {
-        return view('admin.song.update');
+        return view('admin.genre.update');
     }
 
     /**
@@ -70,6 +69,7 @@ class SongController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
     }
 
     /**

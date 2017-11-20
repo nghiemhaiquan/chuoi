@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Song;
 
-class SongController extends Controller
+class SingerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class SongController extends Controller
      */
     public function index()
     {
-        return view('admin.song.list');
+        return view('admin.singer.list');
     }
 
     /**
@@ -24,7 +23,7 @@ class SongController extends Controller
      */
     public function create()
     {
-        return view('admin.song.add');
+        return view('admin.singer.add');
     }
 
     /**
@@ -44,9 +43,10 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
+        
     }
 
     /**
@@ -57,7 +57,7 @@ class SongController extends Controller
      */
     public function edit()
     {
-        return view('admin.song.update');
+        return view('admin.singer.update');
     }
 
     /**

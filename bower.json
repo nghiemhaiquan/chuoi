@@ -1,0 +1,23 @@
+{
+  "name": "framgia_imusic_02",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Hai Quan <nghiemhaiquan95@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/nghiemhaiquan/framgia_imusic_02",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1"
+  }
+}
