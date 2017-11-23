@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Singer;
+use App\Http\Requests\SingerRequest;
 
 class SingerController extends Controller
 {
@@ -13,7 +15,9 @@ class SingerController extends Controller
      */
     public function index()
     {
-        return view('admin.singer.list');
+        $singers = Singer::all();
+
+        return view('admin.singer.list')->with('singers', $singers);
     }
 
     /**
@@ -32,9 +36,17 @@ class SingerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SingerRequest $request)
     {
-        //
+        $singer = Singer::create([
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'description' => $request->description,
+            'country' => $request->country,
+        ]);
+        $singer->save();
+
+        return redirect()->route('admin.singer.list');
     }
 
     /**
@@ -46,7 +58,7 @@ class SingerController extends Controller
     public function show()
     {
         //
-        
+
     }
 
     /**
@@ -55,9 +67,11 @@ class SingerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('admin.singer.update');
+        $singer = Singer::find($id);
+
+        return view('admin.singer.update')->with('singer', $singer);
     }
 
     /**
@@ -67,9 +81,16 @@ class SingerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SingerRequest $request, $id)
     {
-        //
+        $singer = Singer::find($id);
+        $singer->name = $request->name;
+        $singer->gender = $request->gender;
+        $singer->description = $request->description;
+        $singer->country = $request->country;
+        $singer->save();
+
+        return redirect()->route('admin.singer.list');
     }
 
     /**
@@ -80,6 +101,9 @@ class SingerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $singer = Singer::find($id);
+        $singer->delete();
+
+        return redirect()->route('admin.singer.list');
     }
 }

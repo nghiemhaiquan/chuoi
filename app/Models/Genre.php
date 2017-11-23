@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Genre extends Model
 {
-    protected $fillable = 'name';
+    protected $fillable = [
+        'id',
+        'name'
+    ];
 
     public function songs()
     {

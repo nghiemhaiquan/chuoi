@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PlaylistDetail extends Model
 {
-    use SoftDeletes;
-
-    protected $fillalbe = [
+    protected $fillable = [
       'playlist_id',
       'song_id',
     ];

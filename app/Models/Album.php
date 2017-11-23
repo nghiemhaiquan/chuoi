@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Album extends Model
 {
-  use SoftDeletes;
-
-  protected $fillalbe = [
+  protected $fillable = [
     'name',
     'description',
     'image_cover',

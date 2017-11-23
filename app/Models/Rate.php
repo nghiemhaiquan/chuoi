@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rate extends Model
 {
-  use SoftDeletes;
-
   protected $fillable =[
     'point',
     'user_id',
