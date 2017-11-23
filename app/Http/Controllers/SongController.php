@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Song;
+use App\Models\Singer;
+use App\Models\Genre;
+use App\Http\Requests\SongRequest;
 
 class SongController extends Controller
 {
@@ -14,7 +17,9 @@ class SongController extends Controller
      */
     public function index()
     {
-        return view('admin.song.list');
+        $songs = Song::with('genre', 'singer')->get();
+
+        return view('admin.song.list')->with('songs', $songs);
     }
 
     /**
@@ -24,7 +29,10 @@ class SongController extends Controller
      */
     public function create()
     {
-        return view('admin.song.add');
+        $genres = Genre::all();
+        $singers = Singer::all();
+
+        return view('admin.song.add', compact('genres', 'singers'));
     }
 
     /**
@@ -33,9 +41,20 @@ class SongController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SongRequest $request)
     {
-        //
+        $song = Song::create([
+            'link' => $request->link,
+            'image_cover' => $request->image_cover,
+            'description' => $request->description,
+            'lyric' => $request->lyric,
+            'genre_id' => $request->genre_id,
+            'singer_id' => $request->singer_id,
+        ]);
+
+        $song->save();
+
+        return redirect()->route('admin.song.list');
     }
 
     /**
@@ -57,7 +76,11 @@ class SongController extends Controller
      */
     public function edit()
     {
-        return view('admin.song.update');
+        $song = Song::find($id);
+        $genres = Genre::all();
+        $singers = Singer::all();
+
+        return view('admin.song.update', compact('genres', 'singers', 'song'));
     }
 
     /**
@@ -67,9 +90,18 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SongRequest $request, $id)
     {
-        //
+        $song = Song::find($id);
+        $song->link = $request->link;
+        $song->description = $request->description;
+        $song->image_cover = $request->image_cover;
+        $song->lyric = $request->lyric;
+        $song->genre_id = $request->genre_id;
+        $song->singer_id = $request->singer_id;
+        $song->save();
+
+        return redirect()->route('admin.song.list');
     }
 
     /**
@@ -80,6 +112,9 @@ class SongController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $song = Song::find($id);
+        $song->delete();
+
+        return redirect()->route('admin.song.list');
     }
 }
