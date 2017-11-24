@@ -6,8 +6,8 @@ return [
     'name'=>'Name',
     'gender'=>"Gender",
     'genre'=>'Genre',
-    'boy'=>'Boy',
-    'girl'=>'Girl',
+    'male'=>'Male',
+    'female'=>'Female',
     'description'=>'Description',
     'country'=>'Country',
     'reset'=>'Reset',
@@ -20,5 +20,6 @@ return [
     'song'=>'Song',
     'link'=>'Link',
     'lyric'=>'Lyric',
+    'update'=>'Update',
+    'rate_point'=>'Rate Point',
 ];
-

@@ -27,7 +27,6 @@
                 <!--end foot_right-->
             </div>
         </div>
-    </div>	
+    </div>
 </div>
 <!--end footer-->
-
