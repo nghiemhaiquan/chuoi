@@ -13,11 +13,11 @@ class UpdateUserTableVer2 extends Migration
      */
     public function up()
     {
-      Schema::table('users', function (Blueprint $table) {
-          $table->boolean('role')->default('0')->change();
-          $table->boolean('enabled')->default('0')->change();
-          $table->string('facebook_id')->nullable()->change();
-      });
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('role')->default('0')->change();
+            $table->boolean('enabled')->default('0')->change();
+            $table->string('facebook_id')->nullable()->change();
+        });
     }
 
     /**
@@ -27,10 +27,10 @@ class UpdateUserTableVer2 extends Migration
      */
     public function down()
     {
-      Schema::table('users', function (Blueprint $table) {
-          $table->dropColumn('role');
-          $table->dropColumn('enabled');
-          $table->dropColumn('facebook_id');
-      });
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('role');
+            $table->dropColumn('enabled');
+            $table->dropColumn('facebook_id');
+        });
     }
 }

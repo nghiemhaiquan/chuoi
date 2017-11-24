@@ -15,42 +15,53 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix'=>'user'],function(){
-    Route::get('profile',function(){
-        return view('userpage.profile');
-    });
-    Route::get('homepage',function(){
-        return view('userpage.homepage');
-    });
-    Route::get('albumhot',function(){
-        return view('userpage.albumhot');
-    });
+Route::group(['prefix'=>'user'], function() {
+  	Route::get('profile', function(){
+    		return view('userpage.profile');
+  	});
+  	Route::get('homepage', function() {
+    		return view('userpage.homepage');
+  	});
+  	Route::get('albumhot', function() {
+    		return view('userpage.albumhot');
+  	});
 });
 
-Route::group(['prefix'=>'admin'],function(){
-    Route::group(['prefix'=>'genre'],function(){
-        Route::get('list', 'GenreController@index')->name('GenreList');
-        Route::get('add', 'GenreController@create')->name('GenreAdd');
-        Route::get('update', 'GenreController@edit')->name('GenreEdit');
-    });
-    Route::group(['prefix'=>'singer'],function(){
-        Route::get('list', 'SingerController@index')->name('SingerList');
-        Route::get('add', 'SingerController@create')->name('SingerAdd');
-        Route::get('update', 'SingerController@edit')->name('SingerEdit');
-    });
-    Route::group(['prefix'=>'album'],function(){
-        Route::get('list', 'AlbumController@index')->name('AlbumList');
-        Route::get('add', 'AlbumController@create')->name('AlbumAdd');
-        Route::get('update', 'AlbumController@edit')->name('AlbumEdit');
-    });
-    Route::group(['prefix'=>'song'],function(){
-        Route::get('list', 'SongController@index')->name('SongList');
-        Route::get('add', 'SongController@create')->name('SongAdd');
-        Route::get('update', 'SongController@edit')->name('SongEdit');
-    });
+Route::group(['prefix'=>'admin'], function() {
+    Route::resource('genre', 'GenreController', [ 'names' => [
+        'index' => 'admin.genre.list',
+        'create' => 'admin.genre.getAdd',
+        'store' => 'admin.genre.postAdd',
+        'edit' => 'admin.genre.edit',
+        'update' => 'admin.genre.update',
+        'destroy' => 'admin.genre.delete'
+    ]]);
+    Route::resource('singer', 'SingerController', [ 'names' => [
+        'index' => 'admin.singer.list',
+    		'create' => 'admin.singer.getAdd',
+    		'store' => 'admin.singer.postAdd',
+    		'edit' => 'admin.singer.edit',
+    		'update' => 'admin.singer.update',
+    		'destroy' => 'admin.singer.delete'
+  	]]);
+    Route::resource('album', 'AlbumController', [ 'names' => [
+        'index' => 'admin.album.list',
+    		'create' => 'admin.album.getAdd',
+    		'store' => 'admin.album.postAdd',
+    		'edit' => 'admin.album.edit',
+    		'update' => 'admin.album.update',
+    		'destroy' => 'admin.album.delete'
+  	]]);
+  	Route::resource('song', 'SongController', [ 'names' => [
+        'index' => 'admin.song.list',
+    		'create' => 'admin.song.getAdd',
+    		'store' => 'admin.song.postAdd',
+    		'edit' => 'admin.song.edit',
+    		'update' => 'admin.song.update',
+    		'destroy' => 'admin.song.delete'
+  	]]);
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-

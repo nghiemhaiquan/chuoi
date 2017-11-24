@@ -74,7 +74,7 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
         $song = Song::find($id);
         $genres = Genre::all();
