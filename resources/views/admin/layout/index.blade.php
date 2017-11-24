@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Framgia_imusic_02</title>
+    <title>{{ trans('website.title') }}</title>
     <base href="{{asset('')}}">
     <!-- Bootstrap Core CSS -->
     <link href="admin_asset/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -32,9 +32,9 @@
     <div id="wrapper">
 
     @include('admin.layout.header')
-            
+
     @yield('content')
-       
+
     </div>
     <!-- /#wrapper -->
 
@@ -67,4 +67,3 @@
 </body>
 
 </html>
-
