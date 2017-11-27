@@ -26,7 +26,7 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                            
+
                         <form role="form" action="admin/dangnhap" method="POST">
                             <fieldset>
                                 <input type="hidden" name="_token" value="">
@@ -55,4 +55,3 @@
     <script src="admin_asset/dist/js/sb-admin-2.js"></script>
 </body>
 </html>
-
