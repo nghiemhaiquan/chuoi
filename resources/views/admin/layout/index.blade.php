@@ -13,7 +13,8 @@
 
     <!-- MetisMenu CSS -->
     <link href="admin_asset/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-
+    
+    <link rel="stylesheet" type="text/css" href="admin_asset/dist/css/admincss.css">
     <!-- Custom CSS -->
     <link href="admin_asset/dist/css/sb-admin-2.css" rel="stylesheet">
 

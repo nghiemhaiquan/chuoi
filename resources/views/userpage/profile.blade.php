@@ -4,7 +4,7 @@
 <!--start main-->
 <div id="main">
     <div class="container">
-        <div class="container-fluid">
+        <div class="">
             <div class="content">
                 <div class="row">
                     <!--start main left-->
