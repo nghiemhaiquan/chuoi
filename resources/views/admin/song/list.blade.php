@@ -31,7 +31,7 @@
                                 <td>{{ $song->link }}</td>
                                 <td>{!! $song->description !!}</td>
                                 <td>
-                                    <img width="300px" src="" alt="">
+                                    <img src="{{ $song->image_cover }}">
                                 </td>
                                 <td>{!! $song->lyric !!}</td>
                                 <td>{{ $song->genre->name }}</td>

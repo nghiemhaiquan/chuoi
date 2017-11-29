@@ -17,7 +17,7 @@ class SongTableSeeder extends Seeder
             DB::table('songs')->insert([
                 'link' => $faker->url,
                 'image_cover' => $faker->imageUrl,
-                'lyric' => $faker->paragraph,
+                'lyric' => str_random(20),
                 'description' => $faker->paragraph,
                 'rate_point' => '0',
                 'genre_id' => rand(1,6),
