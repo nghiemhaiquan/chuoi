@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Controllers\SongController;
+use App\Http\Requests\SongRequest;
+use Illuminate\Support\Facades\Input;
 
 class Song extends Model
 {
@@ -46,5 +49,10 @@ class Song extends Model
     public function playlistDetails()
     {
         return $this->hasMany(PlaylistDetail::Class);
+    }
+
+    public function getSongPathAttribute()
+    {
+        return asset(config('custom.image_source.song') . $this->attributes['image_cover']);
     }
 }

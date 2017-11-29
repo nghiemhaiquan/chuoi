@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Input;
+use App\Http\Requests\AlbumRequest;
 
 class Album extends Model
 {
@@ -26,5 +28,10 @@ class Album extends Model
   public function albumDetails()
   {
       return $this->hasMany(AlbumDetail::Class);
+  }
+
+  public function getAlbumPathAttribute()
+  {
+      return asset(config('custom.image_source.album') . $this->attributes['image_cover']);
   }
 }

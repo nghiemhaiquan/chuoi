@@ -31,7 +31,7 @@
                                 <td>{{ $song->link }}</td>
                                 <td>{!! $song->description !!}</td>
                                 <td>
-                                    <img src="{{ $song->image_cover }}">
+                                    <img src="{{ $song->getSongPathAttribute() }}">
                                 </td>
                                 <td>{!! $song->lyric !!}</td>
                                 <td>{{ $song->genre->name }}</td>
@@ -42,7 +42,7 @@
                                         {{ Form::submit(trans('website.delete'), ['class' => 'btn btn-danger']) }}
                                     {{ Form::close() }}
                                 </td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{ route('admin.song.edit', $song->id) }}" class="btn btn-primary">{{ trans('website.edit') }}</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i><br><a href="{{ route('admin.song.edit', $song->id) }}" class="btn btn-primary">{{ trans('website.edit') }}</a></td>
                             </tr>
                         </tbody>
                     @endforeach
