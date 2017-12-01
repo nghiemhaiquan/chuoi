@@ -14,6 +14,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    const IS_ADMIN = 1;
     protected $fillable = [
         'name',
         'email',
@@ -41,5 +42,10 @@ class User extends Authenticatable
     public function playlists()
     {
         return $this->hasMany(Playlist::Class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role == User::IS_ADMIN;
     }
 }

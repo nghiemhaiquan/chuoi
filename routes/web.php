@@ -39,7 +39,7 @@ Route::group(['prefix'=>'user'],function(){
     ]]);
 });
 
-Route::group(['prefix'=>'admin'], function() {
+Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'admin']], function() {
     Route::resource('genre', 'GenreController', [ 'names' => [
         'index' => 'admin.genre.list',
         'create' => 'admin.genre.getAdd',

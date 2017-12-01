@@ -20,6 +20,7 @@
                         <th>{{ trans('website.rate_point') }}</th>
                         <th>{{ trans('website.delete') }}</th>
                         <th>{{ trans('website.edit') }}</th>
+                        <th>{{ trans('website.show') }}</th>
                     </tr>
                 </thead>
                 @foreach($albums as $album)
@@ -28,7 +29,9 @@
                             <td>{{ $album->id }}</td>
                             <td>{{ $album->name }}</td>
                             <td>{!! $album->description !!}</td>
-                            <td>{{ $album->image_cover }}</td>
+                            <td>
+                                <img src="{{ $album->getAlbumPathAttribute() }}">
+                            </td>
                             <td>{{ $album->rate_point }}</td>
                             <td class="center"><i class="fa fa-trash-o  fa-fw"></i>
                                 {{ Form::open(['route' => ['admin.album.delete', $album->id], 'method' => 'POST' ]) }}
@@ -37,6 +40,7 @@
                                 {{ Form::close() }}
                             </td>
                             <td class="center"><i class="fa fa-pencil fa-fw"></i><br><a href="{{ route('admin.album.edit', $album->id) }}" class="btn btn-primary">{{ trans('website.edit') }}</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw"></i><br><a href="{{ route('admin.album.show', $album->id) }}" class="btn btn-primary">{{ trans('website.show') }}</a></td>
                         </tr>
                     </tbody>
                 @endforeach

@@ -19,18 +19,18 @@
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner" role="listbox">
                                 <div class="item active">
-                                    <img src="https://zmp3-photo.zadn.vn/banner/9/5/95de47057c51fc093e9763f83c177940_1510310771.jpg" alt="">
+                                    <img src="{{ config('custom.slide.test-1') }}" alt="">
                                     <div class="carousel-caption">
-                                    
+
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img src="https://zmp3-photo.zadn.vn/banner/9/5/95de47057c51fc093e9763f83c177940_1510310771.jpg" alt="...">
+                                    <img src="{{ config('custom.slide.test-1') }}" alt="...">
                                     <div class="carousel-caption">
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img src="https://zmp3-photo.zadn.vn/banner/9/5/95de47057c51fc093e9763f83c177940_1510310771.jpg" alt="...">
+                                    <img src="{{ config('custom.slide.test-1') }}" alt="...">
                                     <div class="carousel-caption">
                                     </div>
                                 </div>
@@ -40,87 +40,33 @@
                     <div class="row">
                         <div class="song">
                             <h2>{{ trans('website.song') }}</h2>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.song') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.song') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.song') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.song') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.song') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.song') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.song') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.song') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
+                            @foreach ($songs as $song)
+                                <div class="col-md-3 product">
+                                    <a href="{{ action('SongController@show', $song->id) }}">
+                                        <img src="{{ $song->getSongPathAttribute() }}" alt="" class="">
+                                        <p>{{ $song->name }}</p>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                         <div class="album">
                             <h2>{{ trans('website.album') }}</h2>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.album') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.album') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.album') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.album') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.album') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
-                            <div class="col-md-3 product">
-                                <img src="https://zmp3-photo.zadn.vn/thumb/240_240/covers/c/e/ce4ac876e42f82e8ce29bece5c2f703b_1509074377.jpg" alt="" class="">
-                                <p>{{ trans('website.album') }}</p>
-                                <p>{{ trans('website.singer') }}</p>
-                            </div>
+                            @foreach ($albums as $album)
+                                <div class="col-md-3 product">
+                                    <a href="">
+                                        <img src="{{ $album->getAlbumPathAttribute() }}" alt="" class="">
+                                        <p>{{ $album->name }}</p>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 main_right">
                     <div class="sidebar">
-                        <img src="https://zmp3-photo.zadn.vn/covers/e/7/e776fa76156c50e4793a82a52b9d5dd6_1499827947.jpg" class="img-responsive" alt="">
-                        <img src="https://zmp3-photo.zadn.vn/covers/1/e/1e8a106b249567119009a8149e1b77ff_1499827613.jpg" class="img-responsive" alt="">
-                        <img src="https://zmp3-photo.zadn.vn/covers/4/1/41338edebf610de7a683e3dab33f8b1a_1499827990.jpg" class="img-responsive" alt="">
+                        <img src="{{ config('custom.slide.test-2') }}" class="img-responsive" alt="">
+                        <img src="{{ config('custom.slide.test-2') }}" class="img-responsive" alt="">
+                        <img src="{{ config('custom.slide.test-2') }}" class="img-responsive" alt="">
                     </div>
                     <div class="Hotlist">
                         <div class="hit_song">
@@ -198,18 +144,18 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>    
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="company">
-                <img src="https://zmp3-static.zadn.vn/skins/zmp3-v5.1/images/doi-tac/universal.jpeg" alt="Universal">
-                <img src="https://zmp3-static.zadn.vn/skins/zmp3-v5.1/images/doi-tac/universal.jpeg" alt="Universal">
-                <img src="https://zmp3-static.zadn.vn/skins/zmp3-v5.1/images/doi-tac/universal.jpeg" alt="Universal">
-                <img src="https://zmp3-static.zadn.vn/skins/zmp3-v5.1/images/doi-tac/universal.jpeg" alt="Universal">
-                <img src="https://zmp3-static.zadn.vn/skins/zmp3-v5.1/images/doi-tac/universal.jpeg" alt="Universal">
-                <img src="https://zmp3-static.zadn.vn/skins/zmp3-v5.1/images/doi-tac/universal.jpeg" alt="Universal">
+                <img src="{{ config('custom.slide.test-2') }}" alt="Universal">
+                <img src="{{ config('custom.slide.test-2') }}" alt="Universal">
+                <img src="{{ config('custom.slide.test-2') }}" alt="Universal">
+                <img src="{{ config('custom.slide.test-1') }}" alt="Universal">
+                <img src="{{ config('custom.slide.test-1') }}" alt="Universal">
+                <img src="{{ config('custom.slide.test-1') }}" alt="Universal">
             </div>
         </div>
     </div>

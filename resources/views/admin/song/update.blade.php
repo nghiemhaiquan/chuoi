@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ trans('website.image_cover') }}</label>
-                        <p><img width="400px" src=""></p>
+                        <p><img src=""></p>
                         <input type="file" name="image_cover" class="form-control">
                     </div>
                     <div class="form-group">

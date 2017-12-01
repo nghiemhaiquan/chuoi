@@ -58,4 +58,6 @@ return [
     'description' => 'Description',
     'comment' => 'Comment',
     'vote' => 'Vote',
+    'show' => 'Show',
+    'import' => 'Import'
 ];
