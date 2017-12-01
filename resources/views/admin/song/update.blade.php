@@ -18,45 +18,21 @@
                 </h1>
             </div>
             <div class="col-lg-7">
-
-                <form action="{{ route('admin.song.update', $song->id) }}" method="POST" >
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="_method" value="PUT">
-                    <div class="form-group">
-                        <label>{{ trans('website.link') }}</label>
-                        <input type="text" name="link" class="form-control" value="{{ $song->link }}">
-                    </div>
-                    <div class="form-group">
-                        <label>{{ trans('website.description') }}</label>
-                        <textarea id="demo" name="description" class="form-control ckeditor" rows="3">
-                        </textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>{{ trans('website.image_cover') }}</label>
-                        <p><img src=""></p>
-                        <input type="file" name="image_cover" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>{{ trans('website.lyric') }}</label>
-                        <textarea id="demo" name="lyric" class="form-control ckeditor" rows="3">
-                        </textarea>
-                    </div>
-                    <div>
-                        <select name="genre_id">
-                            @foreach ($genres as $genre)
-                                <option value="{{ $genre->id }}">{{ $genre->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div>
-                        <select name="singer_id">
-                            @foreach ($singers as $singer)
-                                <option value="{{ $singer->id }}">{{ $singer->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-default">{{ trans('website.edit')}}</button>
-                <form>
+                {!! Form::open([
+                    'action' => ['SongController@update', $song->id],
+                    'method' => 'PUT',
+                ]) !!}
+                    {!! Form::text('link', $song->link) !!}
+                    {!! Form::text('description', $song->description) !!}
+                    {!! Form::file('image_cover') !!}
+                    {!! Form::text('lyric', $song->lyric) !!}
+                    {!! Form::select('genre_id', $genres, $song->genre_id) !!}
+                    {!! Form::select('singer_id', $singers, $song->singer_id) !!}
+                    {!! Form::button(trans('website.update'), [
+                        'class' => 'btn btn-block btn-success btn-xs',
+                        'type' => 'submit',
+                    ]) !!}
+                {{ Form::close() }}
             </div>
         </div>
     </div>

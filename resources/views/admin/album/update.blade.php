@@ -11,23 +11,18 @@
                 </h1>
             </div>
             <div class="col-lg-7">
-
-                <form action="{{ route('admin.album.update', $album->id) }}" method="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="form-group">
-                        <label>{{ trans('website.name') }}</label>
-                        <input class="form-control" name="name" placeholder="{{ trans('website.name') }}" value="{{ $album->name }}" />
-                    </div>
-                    <div class="form-group">
-                        <label>{{ trans('website.description') }}</label>
-                        <textarea id="demo" name="description" class="form-control ckeditor" rows="3" ></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>{{ trans('website.image_cover') }}</label>
-                        <input type="file" name="image_cover" class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-default">{{ trans('website.update') }}</button>
-                <form>
+                {!! Form::open([
+                    'action' => ['AlbumController@update', $album->id],
+                    'method' => 'PUT',
+                ]) !!}
+                    {!! Form::text('name', $album->name) !!}
+                    {!! Form::textarea('description', $album->description) !!}
+                    {!! Form::file('image_cover') !!}
+                    {!! Form::button(trans('website.update'), [
+                        'class' => 'btn btn-block btn-success btn-xs',
+                        'type' => 'submit',
+                    ]) !!}
+                {{ Form::close() }}
             </div>
         </div>
     </div>

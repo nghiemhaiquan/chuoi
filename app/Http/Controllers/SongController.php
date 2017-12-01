@@ -77,8 +77,8 @@ class SongController extends Controller
     public function edit($id)
     {
         $song = Song::find($id);
-        $genres = Genre::all();
-        $singers = Singer::all();
+        $genres = Genre::pluck('name', 'id');
+        $singers = Singer::pluck('name', 'id');
 
         return view('admin.song.update', compact('genres', 'singers', 'song'));
     }
