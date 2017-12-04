@@ -16,26 +16,13 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix'=>'user'],function(){
-    Route::resource('profile', 'ProfileController', [ 'names' => [
-        'index' => 'userpage.profile',
-    ]]);
-    Route::resource('homepage', 'HomepageController', [ 'names' => [
-        'index' => 'userpage.homepage',
-    ]]);
-    Route::resource('albumhot', 'AlbumhotController', [ 'names' => [
-        'index' => 'userpage.albumhot',
-    ]]);
-    Route::resource('singerhot', 'SingerhotController', [ 'names' => [
-        'index' => 'userpage.singerhot',
-    ]]);
-    Route::resource('song', 'UsersongController', [ 'names' => [
-        'index' => 'userpage.song',
-    ]]);
-    Route::resource('video', 'VideoController', [ 'names' => [
-        'index' => 'userpage.video',
-    ]]);
-    Route::resource('playlist', 'PLaylistController', [ 'names' => [
-        'index' => 'userpage.playlist',
+    Route::get('profile', 'UserController@show')->name('userpage.profile');
+    Route::get('song/{id}', 'UserSongController@showSong')->name('userpage.showSong');
+    Route::get('albums', 'UserSongController@indexAlbum')->name('userpage.indexAlbum');
+    Route::resource('playlist', 'PlaylistController', [ 'names' => [
+        'store' => 'userpage.playlist.store',
+        'create' => 'userpage.playlist.create',
+        'show' => 'userpage.playlist.show',
     ]]);
 });
 
@@ -60,8 +47,8 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'admin']], function() 
         'index' => 'admin.album.list',
             'create' => 'admin.album.getAdd',
             'store' => 'admin.album.postAdd',
-            'show' => 'admin.album.show',
             'edit' => 'admin.album.edit',
+            'show' => 'admin.album.show',
             'update' => 'admin.album.update',
             'destroy' => 'admin.album.delete'
     ]]);
@@ -77,5 +64,9 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'admin']], function() 
 });
 
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/user/homepage', 'HomeController@index')->name('home');
+
+Route::resource('comment', 'CommentController');
+Route::post('/deleteComment', 'CommentController@delete' );

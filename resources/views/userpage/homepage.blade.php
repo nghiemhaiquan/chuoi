@@ -42,7 +42,7 @@
                             <h2>{{ trans('website.song') }}</h2>
                             @foreach ($songs as $song)
                                 <div class="col-md-3 product">
-                                    <a href="{{ action('SongController@show', $song->id) }}">
+                                    <a href="{{ action('UserSongController@showSong', $song->id) }}">
                                         <img src="{{ $song->getSongPathAttribute() }}" alt="" class="">
                                         <p>{{ $song->name }}</p>
                                     </a>

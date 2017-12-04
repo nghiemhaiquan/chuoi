@@ -10,10 +10,10 @@
                     <!--start main left-->
                     <div class="col-md-3" id="main_left">
                         <div class="image"></div>
-                        <p>Ten dai dien</p>
-                        <a href="#">Add Friend</a>
-                        <button>Edit proflie</button>
-                        <p><i class="fa fa-clock-o"></i>ngay thang nam</p>
+                        <p>{{ $user->name }}</p>
+                        <a href="#">{{ trans('website.add_friend') }}</a>
+                        <button>{{ trans('website.edit_profile') }}</button>
+                        <a class="btn btn-primary pull-right" href="{{ action('PlaylistController@create') }}"><p>{{ trans('website.create_playlist') }}</p>
                     </div>
                     <!--end main left-->
                     <!--start main-right-->
@@ -21,10 +21,10 @@
                         <div class="main_right_content">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Genre</a></li>
-                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Singer</a></li>
-                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Album</a></li>
-                                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Song</a></li>
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">{{ trans('website.genre') }}</a></li>
+                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ trans('website.singer') }}</a></li>
+                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">{{ trans('website.album') }}</a></li>
+                                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">{{ trans('website.song') }}</a></li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">

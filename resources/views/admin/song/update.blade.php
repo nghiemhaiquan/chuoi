@@ -21,6 +21,8 @@
                 {!! Form::open([
                     'action' => ['SongController@update', $song->id],
                     'method' => 'PUT',
+                    'class' => 'form-horizontal',
+                    'enctype' => 'multipart/form-data'
                 ]) !!}
                     {!! Form::text('link', $song->link) !!}
                     {!! Form::text('description', $song->description) !!}

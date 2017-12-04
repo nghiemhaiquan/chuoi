@@ -12,7 +12,7 @@
 </head>
 <body>
 	@include('userpage.header')
-	
+
     @yield('profile')
     @yield('homepage')
     @yield('albumhot')

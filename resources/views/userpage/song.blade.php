@@ -17,7 +17,7 @@
                     </div>
                     <div class="audio">
                         <audio controls>
-                            <source src="" type="">
+                            <source src="{{ $song->link }}" type="">
                         </audio>
                     </div>
                     <div class="description">
@@ -49,33 +49,10 @@
                       @endforeach
                     </div>
                     <div class="comment">
-                        <h3>{{ trans('website.comment') }} (<span>0</span>)</h3>
-                        <form action method="post">
-                            <img src="">
-                            <div class="textarea">
-                                <textarea cols="30" rows="10"></textarea>
-                            </div>
-                            <button type="submit" name="btn">{{ trans('website.comment') }}</button>
-                        </form>
+                        @include('userpage.comment')
                     </div>
                     <div class="commentlist">
                         <h3>{{ trans('website.comment') }}</h3>
-                        <div class="item-comment">
-                            <a href=""><img src=""></a>
-                            <div class="postcomment">
-                                <h4>{{ trans('website.user') }}</h4>
-                                <span>{{ trans('website.user') }}</span>
-                                <p>{{ trans('website.user') }}</p>
-                            </div>
-                        </div>
-                        <div class="item-comment">
-                            <a href=""><img src=""></a>
-                            <div class="postcomment">
-                                <h4>{{ trans('website.user') }}</h4>
-                                <span>{{ trans('website.user') }}</span>
-                                <p>{{ trans('website.user') }}</p>
-                            </div>
-                        </div>
                         <div class="item-comment">
                             <a href=""><img src=""></a>
                             <div class="postcomment">
