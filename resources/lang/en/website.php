@@ -59,5 +59,11 @@ return [
     'comment' => 'Comment',
     'vote' => 'Vote',
     'show' => 'Show',
-    'import' => 'Import'
+    'import' => 'Import',
+    'create_playlist' => 'Create Playlist',
+    'add_friend' => 'Add Friend',
+    'edit_profile' => 'Edit proflie',
+    'playlist_name' => 'Playlist Name',
+    'type-comment' => 'Type Comment',
+    'send' => 'Send'
 ];

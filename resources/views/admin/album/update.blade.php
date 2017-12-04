@@ -14,6 +14,8 @@
                 {!! Form::open([
                     'action' => ['AlbumController@update', $album->id],
                     'method' => 'PUT',
+                    'class' => 'form-horizontal',
+                    'enctype' => 'multipart/form-data'
                 ]) !!}
                     {!! Form::text('name', $album->name) !!}
                     {!! Form::textarea('description', $album->description) !!}
