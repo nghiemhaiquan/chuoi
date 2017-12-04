@@ -47,7 +47,7 @@ class UserController extends Controller
     public function show()
     {
         $user = Auth::user();
-        
+
         return view('userpage.profile', compact('user'));
     }
 

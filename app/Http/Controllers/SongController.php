@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Song;
+use App\Models\Album;
 use App\Models\Singer;
 use App\Models\Genre;
+use App\Helpers\SetFile;
 use App\Http\Requests\SongRequest;
 
 class SongController extends Controller
@@ -45,7 +47,7 @@ class SongController extends Controller
     {
         $song = Song::create([
             'link' => $request->link,
-            'image_cover' => $request->image_cover,
+            'image_cover' => SetFile::storingSongImage($request),
             'description' => $request->description,
             'lyric' => $request->lyric,
             'genre_id' => $request->genre_id,
@@ -63,10 +65,6 @@ class SongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -95,7 +93,7 @@ class SongController extends Controller
         $song = Song::find($id);
         $song->link = $request->link;
         $song->description = $request->description;
-        $song->image_cover = $request->image_cover;
+        $song->image_cover = SetFile::storingSongImage($request);
         $song->lyric = $request->lyric;
         $song->genre_id = $request->genre_id;
         $song->singer_id = $request->singer_id;

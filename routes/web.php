@@ -64,7 +64,7 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'admin']], function() 
 });
 
 Auth::routes();
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/user/homepage', 'HomeController@index')->name('home');
 

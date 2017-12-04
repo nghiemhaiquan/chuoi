@@ -65,5 +65,6 @@ return [
     'edit_profile' => 'Edit proflie',
     'playlist_name' => 'Playlist Name',
     'type-comment' => 'Type Comment',
-    'send' => 'Send'
+    'send' => 'Send',
+    'register' => "Register",
 ];

@@ -44,7 +44,6 @@ class SingerController extends Controller
             'description' => $request->description,
             'country' => $request->country,
         ]);
-        $singer->save();
 
         return redirect()->route('admin.singer.list');
     }

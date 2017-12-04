@@ -41,7 +41,6 @@ class GenreController extends Controller
         $genre = Genre::create([
             'name' => $request->name,
         ]);
-        $genre->save();
 
         return redirect()->route('admin.genre.list');
     }

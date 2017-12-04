@@ -8,6 +8,7 @@ use App\Models\Song;
 use App\Models\AlbumDetail;
 use App\Http\Requests\AlbumRequest;
 use App\Helpers\SetFile;
+use Illuminate\Support\Facades\Input;
 
 class AlbumController extends Controller
 {
@@ -111,11 +112,14 @@ class AlbumController extends Controller
 
     public function createAlbumDetails(Request $request, $id)
     {
-        $albumDetail = AlbumDetail::create([
-            'album_id' => $id,
-            'song_id' => $request->song_id
-        ]);
-
+        foreach ($request->input('song_id') as $song_id)
+        {
+            $albumDetail = AlbumDetail::create([
+                'album_id' => $id,
+                'song_id' => $song_id,
+            ]);
+        }
+        
         return redirect()->route('admin.album.show', compact('id'));
     }
 }
