@@ -12,15 +12,16 @@
             </div>
             <!-- /.col-lg-12 -->
             <div class="col-lg-7">
-
-                <form action="{{ route('admin.genre.update', $genre->id) }}" method="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="form-group">
-                        <label>{{ trans('website.name') }}</label>
-                        <input class="form-control" name="name" placeholder="{{ trans('website.name') }}" value="{{ $genre->name }}" >
-                    </div>
-                    <button type="submit" class="btn btn-default">{{ trans('website.edit') }}</button>
-                <form>
+                {!! Form::open([
+                    'action' => ['GenreController@update', $genre->id],
+                    'method' => 'PUT',
+                ]) !!}
+                    {!! Form::text('name', $genre->name) !!}
+                    {!! Form::button(trans('website.update'), [
+                        'class' => 'btn btn-block btn-success btn-xs',
+                        'type' => 'submit',
+                    ]) !!}
+                {{ Form::close() }}
             </div>
         </div>
     </div>

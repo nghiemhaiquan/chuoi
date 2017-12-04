@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Album;
+use App\Models\Song;
+use App\Models\AlbumDetail;
 use App\Http\Requests\AlbumRequest;
+use App\Helpers\SetFile;
 
 class AlbumController extends Controller
 {
@@ -41,9 +44,8 @@ class AlbumController extends Controller
         $album = Album::create([
             'name' => $request->name,
             'description' => $request->description,
-            'image_cover' => $request->image_cover,
+            'image_cover' => SetFile::storingAlbumImage($request),
         ]);
-        $album->save();
 
         return redirect()->route('admin.album.list');
     }
@@ -54,9 +56,12 @@ class AlbumController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-    public function show()
+    public function show($id)
     {
-  //
+        $album = Album::find($id);
+        $songs = Song::all();
+
+        return view('admin.album.show', compact('album', 'songs'));
     }
 
   /**
@@ -84,7 +89,7 @@ class AlbumController extends Controller
         $album = Album::find($id);
         $album->name = $request->name;
         $album->description = $request->description;
-        $album->image_cover = $request->image_cover;
+        $album->image_cover = SetFile::storingAlbumImage($request);
         $album->save();
 
         return redirect()->route('admin.album.list');
@@ -102,5 +107,15 @@ class AlbumController extends Controller
         $album->delete();
 
         return redirect()->route('admin.album.list');
+    }
+
+    public function createAlbumDetails(Request $request, $id)
+    {
+        $albumDetail = AlbumDetail::create([
+            'album_id' => $id,
+            'song_id' => $request->song_id
+        ]);
+
+        return redirect()->route('admin.album.show', compact('id'));
     }
 }

@@ -10,10 +10,9 @@
                     <div class="title">
                         <img src="">
                         <div class="">
-                            <h1>{{ trans('website.song') }}</h1>
-                            <h2>{{ trans('website.singer') }}</h2>
-                            <p><span>{{ trans('website.phathanh') }} </span>{{ trans('website.2017') }}</p>
-                            <p><span>{{ trans('website.genre') }} </span>{{ trans('website.genre') }}</p>
+                            <h1>{!! $song->description !!}</h1>
+                            <h2>{{ $song->singer->name }}</h2>
+                            <p><span>{{ trans('website.genre') }} </span>{{ $song->genre->name }}</p>
                         </div>
                     </div>
                     <div class="audio">
@@ -22,75 +21,32 @@
                         </audio>
                     </div>
                     <div class="description">
-                        <label>{{ trans('website.description') }}<span>{{ trans('website.song') }}</span></label>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <label>{{ trans('website.lyric') }}</label>
+                        <p>{!! $song->lyric !!}</p>
                     </div>
                     <div class="infor-singer">
-                        <a href=""><img src=""></a>
                         <div class="artist-info">
                             <h2>{{ trans('website.singer') }}</h2>
-                            <span>
-                                <i></i>
-                                <b></b>
-                                <s>{{ trans('website.vote') }}</s>
-                            </span>
+                            <p>{{ $song->singer->name }}</p>
                         </div>
                         <div class="singer-description">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            <h3>{{ trans('website.description') }}</h3>
+                            <p>{{ $song->singer->description }}</p>
+                        </div>
+                        <div>
+                            <h3>{{ trans('website.country') }}</h3>
+                            <p>{{ $song->singer->country }}</p>
                         </div>
                     </div>
                     <div class="singer-album">
+                      @foreach( $albums as $album )
                         <h2><a href="">{{ trans('website.album') }}</a></h2>
                         <div class="col-md-3 product">
-                            <img src="" alt="Ừ Có Anh Đây (Single) - Tino" class="img-responsive fn-thumb">
-                            <h3><a href="#">{{ trans('website.album') }}</a></h3>
-                            <h4><a href="#">{{ trans('website.singer') }}</a></h4>
+                            <img src="config('custom.image_source.album').$album->image_cover" alt="">
+                            <h3><a href="#">{{ $album->name }}</a></h3>
+                            <h4><a href="#">{{ $song->singer->name }}</a></h4>
                         </div>
-                        <div class="col-md-3 product">
-                            <img src="" alt="Ừ Có Anh Đây (Single) - Tino" class="img-responsive fn-thumb">
-                            <h3><a href="#">{{ trans('website.album') }}</a></h3>
-                            <h4><a href="#">{{ trans('website.singer') }}</a></h4>
-                        </div>
-                        <div class="col-md-3 product">
-                            <img src="" alt="Ừ Có Anh Đây (Single) - Tino" class="img-responsive fn-thumb">
-                            <h3><a href="#">{{ trans('website.album') }}</a></h3>
-                            <h4><a href="#">{{ trans('website.singer') }}</a></h4>
-                        </div>
-                        <div class="col-md-3 product">
-                            <img src="" alt="Ừ Có Anh Đây (Single) - Tino" class="img-responsive fn-thumb">
-                            <h3><a href="#">{{ trans('website.album') }}</a></h3>
-                            <h4><a href="#">{{ trans('website.singer') }}</a></h4>
-                        </div>
-                        <div class="col-md-3 product">
-                            <img src="" alt="Ừ Có Anh Đây (Single) - Tino" class="img-responsive fn-thumb">
-                            <h3><a href="#">{{ trans('website.album') }}</a></h3>
-                            <h4><a href="#">{{ trans('website.singer') }}</a></h4>
-                        </div>
-                        <div class="col-md-3 product">
-                            <img src="" alt="Ừ Có Anh Đây (Single) - Tino" class="img-responsive fn-thumb">
-                            <h3><a href="#">{{ trans('website.album') }}</a></h3>
-                            <h4><a href="#">{{ trans('website.singer') }}</a></h4>
-                        </div>
-                        <div class="col-md-3 product">
-                            <img src="" alt="Ừ Có Anh Đây (Single) - Tino" class="img-responsive fn-thumb">
-                            <h3><a href="#">{{ trans('website.album') }}</a></h3>
-                            <h4><a href="#">{{ trans('website.singer') }}</a></h4>
-                        </div>
-                        <div class="col-md-3 product">
-                            <img src="" alt="Ừ Có Anh Đây (Single) - Tino" class="img-responsive fn-thumb">
-                            <h3><a href="#">{{ trans('website.album') }}</a></h3>
-                            <h4><a href="#">{{ trans('website.singer') }}</a></h4>
-                        </div>
+                      @endforeach
                     </div>
                     <div class="comment">
                         <h3>{{ trans('website.comment') }} (<span>0</span>)</h3>

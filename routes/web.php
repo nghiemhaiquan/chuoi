@@ -60,6 +60,7 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'admin']], function() 
         'index' => 'admin.album.list',
             'create' => 'admin.album.getAdd',
             'store' => 'admin.album.postAdd',
+            'show' => 'admin.album.show',
             'edit' => 'admin.album.edit',
             'update' => 'admin.album.update',
             'destroy' => 'admin.album.delete'
@@ -72,6 +73,7 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'admin']], function() 
             'update' => 'admin.song.update',
             'destroy' => 'admin.song.delete'
     ]]);
+    Route::put('album/{id}/import-song-to-album', 'AlbumController@createAlbumDetails')->name('admin.album.import');
 });
 
 Auth::routes();
