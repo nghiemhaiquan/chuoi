@@ -15,7 +15,7 @@
                         <tr align="center">
                             <th>{{ trans('website.id') }}</th>
                             <th>{{ trans('website.link') }}</th>
-                            <th>{{ trans('website.description') }}</th>
+                            <th>{{ trans('website.name') }}</th>
                             <th>{{ trans('website.image_cover') }}</th>
                             <th>{{ trans('website.lyric') }}</th>
                             <th>{{ trans('website.genre') }}</th>

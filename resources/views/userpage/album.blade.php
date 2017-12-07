@@ -1,7 +1,6 @@
 @extends('userpage.master')
 
-@section('video')
-
+@section('album')
 <script type="text/javascript" src="assets/jquery/dist/jquery.min.js"></script>
 <div id="album">
     <div class="container">
@@ -17,6 +16,9 @@
                             <p><span>{{ trans('website.genre') }} </span>{{ trans('website.genre') }}</p>
                         </div>
                     </div>
+                    @if(!isset($songs))
+                    <p>no song</p>
+                    @else
                     <div class="audio">
                         <div class="audio-cover">
                             <div class="plyr-1">
@@ -42,14 +44,11 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="description">
-                        {{ $song->singer->name }}
-                            <p>{{ $song->description }}</p>
-                    </div>
+                    @endif
                     <div class="infor-singer">
                         <a href=""><img src="https://zmp3-photo.zadn.vn/thumb/240_240/avatars/7/3/73688444a73a76169d03b689a7e785cf_1404904575.jpg"></a>
                         <div class="artist-info">
-                            <h2>{{ trans('website.singer') }}</h2>
+                            <h2>{{ $song->singer->name }}</h2>
                             <span>
                                 <i></i>
                                 <b></b>
@@ -57,7 +56,7 @@
                             </span>
                         </div>
                         <div class="singer-description">
-
+                            {{ $album->description }}
                         </div>
                     </div>
                     <div class="singer-album">
@@ -71,6 +70,7 @@
                         @endforeach
                     </div>
                     <div class="comment">
+                        <h3>{{trans('website.comment')}}</h3>
                         <div class="target_id" data-target-id="{{ $album->id }}"></div>
                         @if (auth()->check())
                           <div class="user_id" data-user-id="{{ Auth::user()->id }}"></div>
@@ -120,5 +120,4 @@
     })
 });
 </script>
-
 @endsection

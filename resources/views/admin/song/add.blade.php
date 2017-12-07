@@ -27,8 +27,8 @@
                         <input class="form-control" name="link" placeholder="{{ trans('website.link') }}" />
                     </div>
                     <div class="form-group">
-                        <label>{{ trans('website.description') }}</label>
-                        <textarea id="demo" name="description" class="form-control ckeditor" rows="5"></textarea>
+                        <label>{{ trans('website.name') }}</label>
+                        <textarea id="demo" name="description" class="form-control" rows="5"></textarea>
                     </div>
                     <div class="form-group">
                         <label>{{ trans('website.image_cover') }}</label>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ trans('website.lyric') }}</label>
-                        <textarea id="demo" name="lyric" class="form-control ckeditor" rows="5"></textarea>
+                        <textarea id="demo" name="lyric" class="form-control" rows="5"></textarea>
                     </div>
                     <div>
                         <select name="genre_id">

@@ -17,13 +17,22 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>'user'],function(){
     Route::get('profile', 'UserController@show')->name('userpage.profile');
-    Route::get('song/{id}', 'UserSongController@showSong')->name('userpage.showSong');
-    Route::get('albums', 'UserSongController@indexAlbum')->name('userpage.indexAlbum');
+    Route::get('song/{id}', 'UserSongController@showSong');
+    Route::get('album/{id}', 'UserSongController@showAlbum');
     Route::resource('playlist', 'PlaylistController', [ 'names' => [
         'store' => 'userpage.playlist.store',
         'create' => 'userpage.playlist.create',
         'show' => 'userpage.playlist.show',
     ]]);
+    Route::post('/comment', 'CommentController@store');
+    Route::post('/deleteComment', 'CommentController@destroy');
+    Route::get('/genres/{id}', 'HomeController@showGenre');
+    Route::get('genres', 'HomeController@indexGenre');
+    Route::get('/singers/{id}', 'HomeController@showSinger');
+    Route::get('singers', 'HomeController@indexSinger');
+    Route::get('albums', 'UserSongController@indexAlbum');
+    Route::get('songs', 'UserSongController@indexSong');
+    Route::get('playlists/{id}', 'UserSongController@showPlaylist');
 });
 
 Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'admin']], function() {
@@ -64,9 +73,5 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'admin']], function() 
 });
 
 Auth::routes();
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-
+Route::get('/logout','UserController@performLogout')->name('logout');
 Route::get('/user/homepage', 'HomeController@index')->name('home');
-
-Route::resource('comment', 'CommentController');
-Route::post('/deleteComment', 'CommentController@delete' );

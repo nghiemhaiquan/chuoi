@@ -49,7 +49,7 @@ return [
     'license' => 'License number 314/GP-BTTTT.',
     'mobile' => 'Mobile version',
     'user' => 'User',
-    'is_hot' => 'Is Hot',
+    'is_hot' => 'Hot',
     'mp3' => 'MP3',
     'new' => 'News',
     'tv' => 'TV',

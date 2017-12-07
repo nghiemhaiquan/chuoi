@@ -1,4 +1,5 @@
 @extends('admin.layout.index')
+
 @section('content')
 <!-- Page Content -->
 <div id="page-wrapper">
@@ -14,12 +15,32 @@
                     'action' => ['SingerController@update', $singer->id],
                     'method' => 'PUT',
                 ]) !!}
-                    {!! Form::text('name', $singer->name) !!}
-                    {!! Form::select('gender', ['1' => 'Male', '0' => 'Female']) !!}
-                    {!! Form::textarea('description', $singer->description) !!}
-                    {!! Form::text('country', $singer->country) !!}
+                <div class="form-group">
+                    <label>{{ trans('website.name') }}</label>
+                    {!! Form::text('name', $singer->name,[
+                        'class'=>'form-control'
+                    ]) !!}
+                </div>
+                <div class="form-group">
+                    <label>{{ trans('website.gender') }}</label>
+                    {!! Form::select('gender', ['1' => 'Male', '0' => 'Female'],[
+                        'class'=>'form-control'
+                    ]) !!}
+                </div>
+                <div class="form-group">
+                    <label>{{ trans('website.description') }}</label>
+                    {!! Form::textarea('description', $singer->description,[
+                        'class'=>'form-control'
+                    ]) !!}
+                </div>
+                <div class="form-group">
+                    <label>{{ trans('website.country') }}</label>
+                    {!! Form::text('country', $singer->country,[
+                        'class'=>'form-control'
+                    ]) !!}
+                </div>
                     {!! Form::button(trans('website.update'), [
-                        'class' => 'btn btn-block btn-success btn-xs',
+                        'class' => 'btn btn-default',
                         'type' => 'submit',
                     ]) !!}
                 {{ Form::close() }}

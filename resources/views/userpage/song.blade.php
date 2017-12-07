@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-8 song-left">
                     <div class="title">
-                        <img src="">
+                        <img src="{{ $song->getSongPathAttribute() }}">
                         <div class="">
                             <h1>{!! $song->description !!}</h1>
                             <h2>{{ $song->singer->name }}</h2>
@@ -25,56 +25,42 @@
                         <p>{!! $song->lyric !!}</p>
                     </div>
                     <div class="infor-singer">
+                        <a href=""><img src="https://zmp3-photo.zadn.vn/thumb/240_240/avatars/6/8/68bcf97b41cd37e918cdf2dc0b85e895_1509438182.jpg"></a>
                         <div class="artist-info">
-                            <h2>{{ trans('website.singer') }}</h2>
-                            <p>{{ $song->singer->name }}</p>
+                            <h2>{{ $song->singer->name }}</h2>
+                            <span>
+                                <i></i>
+                                <b></b>
+                                <s>{{ trans('website.vote') }}</s>
+                            </span>
                         </div>
                         <div class="singer-description">
-                            <h3>{{ trans('website.description') }}</h3>
-                            <p>{{ $song->singer->description }}</p>
-                        </div>
-                        <div>
-                            <h3>{{ trans('website.country') }}</h3>
+                            {{ $song->singer->description }}
                             <p>{{ $song->singer->country }}</p>
                         </div>
                     </div>
-                    <div class="singer-album">
-                      @foreach( $albums as $album )
-                        <h2><a href="">{{ trans('website.album') }}</a></h2>
+                    <div class="singer-song">
+                        <h2><a href="">{{ trans('website.song') }}</a></h2>
+                        @foreach( $songs as $song )
                         <div class="col-md-3 product">
-                            <img src="config('custom.image_source.album').$album->image_cover" alt="">
-                            <h3><a href="#">{{ $album->name }}</a></h3>
+                            <img src="{{ $song->getSongPathAttribute() }}" alt="">
+                            <h3><a href="#">{{ $song->description }}</a></h3>
                             <h4><a href="#">{{ $song->singer->name }}</a></h4>
                         </div>
-                      @endforeach
+                        @endforeach
                     </div>
                     <div class="comment">
+                        <h3>{{trans('comment')}}</h3>
+                        <div class="target_id" data-target-id="{{ $song->id }}"></div>
+                        @if (auth()->check())
+                        <div class="user_id" data-user-id="{{ Auth::user()->id }}"></div>
+                        @else <p>You haven't login yet!</p>
+                        @endif
                         @include('userpage.comment')
-                    </div>
-                    <div class="commentlist">
-                        <h3>{{ trans('website.comment') }}</h3>
-                        <div class="item-comment">
-                            <a href=""><img src=""></a>
-                            <div class="postcomment">
-                                <h4>{{ trans('website.user') }}</h4>
-                                <span>{{ trans('website.user') }}</span>
-                                <p>{{ trans('website.user') }}</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-md-4 song-right">
-                    <img src="">
-                    <h2>{{ trans('website.user') }}</h2>
-                    <div class="listhot">
-                        <ul>
-                            <li>
-                                <a href=""><img src=""></a>
-                                <h3><a href="">{{ trans('website.user') }}</a></h3>
-                                <h4><a href="">{{ trans('website.user') }}</a></h4>
-                            </li>
-                        </ul>
-                    </div>
+                    
                 </div>
             </div>
         </div>

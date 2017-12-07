@@ -14,30 +14,47 @@
             <div class="col-lg-7">
                 <div class="playlist">
                     <img src="">
-                    <div class="form-group">
-                        <label>{{ $album->name }}</label>
-                    </div>
-                    <div class="form-group">
-                        <label>{{ $album->description }}</label>
-                    </div>
-                    @foreach($album->albumDetails as $albumDetail)
-                        <div class="form-group">
-                            <label>{!! $albumDetail->song->description !!}</label>
-                        </div>
-                    @endforeach
                     {!! Form::open([
                         'action' => ['AlbumController@createAlbumDetails', $album->id],
                         'method' => 'PUT',
                     ]) !!}
-                    @foreach ($songs as $song )
-                        <tr>
-                            <td><div class="pull-right">
-                                {!! Form::checkbox('song_id[]', $song->id) !!}{!! $song->description !!}
-                            </div></td>
-                        </tr>
-                    @endforeach
+                    <div class="form-group">
+                        <label>{{trans('website.name')}}</label>
+                        {!! Form::text('name', $album->name,[
+                        'class'=>'form-control',
+                        'placeholder' => trans('website.name'),
+                        'disabled'=>'disabled'
+                    ]) !!}
+
+                    </div>
+                    <div class="form-group">
+                        <label>{{trans('website.description')}}</label>
+                        {!! Form::text('name', $album->description,[
+                        'class'=>'form-control',
+                        'placeholder' => trans('website.name'),
+                        'disabled' => 'disabled'
+                    ]) !!}
+                    </div>
+                    <div class="form-group">
+                        <label>{{trans('website.song')}} {{trans('website.name')}}</label>
+                        <div class="list-song">
+                            @foreach($album->albumDetails as $albumDetail)   
+                                <label>{!! $albumDetail->song->description !!}</label>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label>{{trans('website.song')}} List</label>
+                        <div class="wrap">
+                            @foreach ($songs as $song )
+                                <div class="check">
+                                    {!! Form::checkbox('song_id[]', $song->id) !!}{!! $song->description !!}
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                     {!! Form::button(trans('website.import'), [
-                        'class' => 'btn btn-block btn-success btn-xs',
+                        'class' => 'btn btn-default',
                         'type' => 'submit',
                     ]) !!}
                     {{ Form::close() }}

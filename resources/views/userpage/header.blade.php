@@ -19,9 +19,7 @@
                     </form>
                     <div class="menu">
                         <ul class="nav navbar-nav">
-                            <li><a href="#">{{ trans('website.mp3') }}</a></li>
-                            <li><a href="#">{{ trans('website.new') }}</a></li>
-                            <li><a href="#">{{ trans('website.tv') }}</a></li>
+                            
                         </ul>
                     </div>
                     <ul class="nav navbar-nav navbar-right">
@@ -33,12 +31,10 @@
                             <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route('userpage.profile') }}"><i class="fa fa-btn fa-sign-out"></i>{{ trans('website.profile') }}</a></li>
-                            </ul>
 
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ route('logout') }}"><i class="fa fa-btn fa-sign-out"></i>{{ trans('website.logout') }}</a></li>
+                                <li><a href="{{ route('logout') }}"><i class="fa fa-btn fa-sign-out"></i>{{ trans('website.settings') }}</a></li>
                             </ul>
                         </li>
                         @endif
@@ -53,43 +49,9 @@
                 <div class="row" >
                     <ul class="menu-parent">
                         <li><a href=""><i class="fa fa-home"></i></a></li>
-                        <li><a href="">{{ trans('website.is_hot') }}</a>
-                            <ul class="menu-child">
-                                <li><a href="">{{ trans('website.Link') }}</a>
-                                    <ul>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="">{{ trans('website.Link') }}</a>
-                                    <ul>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="">{{ trans('website.Link') }}</a>
-                                    <ul>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="">{{ trans('website.Link') }}</a>
-                                    <ul>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                        <li><a href="">{{ trans('website.Link') }}</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <li><a href="">{{ trans('website.song') }}</a>
                         </li>
-                        <li><a href="">{{ trans('website.genre') }}</a></li>
+                        <li><a href="{{ action('HomeController@indexGenre') }}">{{ trans('website.genre') }}</a></li>
                         <li><a href="">{{ trans('website.album') }}</a></li>
                         <li><a href="">{{ trans('website.singer') }}</a></li>
                     </ul>

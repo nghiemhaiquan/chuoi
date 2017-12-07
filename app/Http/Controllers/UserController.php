@@ -84,4 +84,10 @@ class UserController extends Controller
     {
         //
     }
+
+    public function performLogout(Request $request)
+    {
+        Auth::logout();
+        return redirect('user/homepage'); 
+    }
 }

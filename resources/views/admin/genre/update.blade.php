@@ -16,9 +16,14 @@
                     'action' => ['GenreController@update', $genre->id],
                     'method' => 'PUT',
                 ]) !!}
-                    {!! Form::text('name', $genre->name) !!}
+                <div class="form-group">
+                    {!! Form::text('name', $genre->name,[
+                        'class'=>'form-control',
+                        'placeholder'=>trans('website.name'),
+                    ]) !!}
+                </div>
                     {!! Form::button(trans('website.update'), [
-                        'class' => 'btn btn-block btn-success btn-xs',
+                        'class' => 'btn btn-default',
                         'type' => 'submit',
                     ]) !!}
                 {{ Form::close() }}

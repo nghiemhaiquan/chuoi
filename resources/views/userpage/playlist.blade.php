@@ -1,7 +1,6 @@
 @extends('userpage.master')
 
-@section('video')
-
+@section('album')
 <script type="text/javascript" src="assets/jquery/dist/jquery.min.js"></script>
 <div id="album">
     <div class="container">
@@ -17,6 +16,9 @@
                             <p><span>{{ trans('website.genre') }} </span>{{ trans('website.genre') }}</p>
                         </div>
                     </div>
+                    @if(!isset($songs))
+                    <p>no song</p>
+                    @else
                     <div class="audio">
                         <div class="audio-cover">
                             <div class="plyr-1">
@@ -42,57 +44,9 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="description">
-                        {{ $song->singer->name }}
-                            <p>{{ $song->description }}</p>
-                    </div>
-                    <div class="infor-singer">
-                        <a href=""><img src="https://zmp3-photo.zadn.vn/thumb/240_240/avatars/7/3/73688444a73a76169d03b689a7e785cf_1404904575.jpg"></a>
-                        <div class="artist-info">
-                            <h2>{{ trans('website.singer') }}</h2>
-                            <span>
-                                <i></i>
-                                <b></b>
-                                <s>{{ trans('website.vote') }}</s>
-                            </span>
-                        </div>
-                        <div class="singer-description">
-
-                        </div>
-                    </div>
-                    <div class="singer-album">
-                        <h2><a href="">{{ trans('website.album') }}</a></h2>
-                        @foreach( $albums as $albumlist )
-                          <div class="col-md-3 product">
-                              <img src="{{ $albumlist->getAlbumPathAttribute() }}" alt="">
-                              <h3><a href="#">{{ $albumlist->name }}</a></h3>
-                              <h4><a href="#">{{ $song->singer->name }}</a></h4>
-                          </div>
-                        @endforeach
-                    </div>
-                    <div class="comment">
-                        <div class="target_id" data-target-id="{{ $album->id }}"></div>
-                        @if (auth()->check())
-                          <div class="user_id" data-user-id="{{ Auth::user()->id }}"></div>
-                        @else
-                          <div><p>You haven't login yet!</p></div>
-                        @endif
-                        @include('userpage.comment')
-                    </div>
+                    @endif
                 </div>
-                <div class="col-md-4 song-right">
-                    <img src="">
-                    <h2>{{ trans('website.user') }}</h2>
-                    <div class="listhot">
-                        <ul>
-                            <li>
-                                <a href=""><img src=""></a>
-                                <h3><a href="">{{ trans('website.user') }}</a></h3>
-                                <h4><a href="">{{ trans('website.user') }}</a></h4>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -120,5 +74,4 @@
     })
 });
 </script>
-
 @endsection

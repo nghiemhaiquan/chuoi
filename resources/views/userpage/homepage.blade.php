@@ -44,7 +44,8 @@
                                 <div class="col-md-3 product">
                                     <a href="{{ action('UserSongController@showSong', $song->id) }}">
                                         <img src="{{ $song->getSongPathAttribute() }}" alt="" class="">
-                                        <p>{{ $song->name }}</p>
+                                        <span>{{ $song->description }}</span>
+                                        <span>{{ $song->singer->name }}</span>
                                     </a>
                                 </div>
                             @endforeach
@@ -53,9 +54,9 @@
                             <h2>{{ trans('website.album') }}</h2>
                             @foreach ($albums as $album)
                                 <div class="col-md-3 product">
-                                    <a href="">
+                                    <a href="{{ action('UserSongController@showAlbum', $album->id) }}">
                                         <img src="{{ $album->getAlbumPathAttribute() }}" alt="" class="">
-                                        <p>{{ $album->name }}</p>
+                                        <span>{{ $album->name }}</span>
                                     </a>
                                 </div>
                             @endforeach
@@ -148,14 +149,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="company">
-                <img src="{{ config('custom.slide.test-2') }}" alt="Universal">
-                <img src="{{ config('custom.slide.test-2') }}" alt="Universal">
-                <img src="{{ config('custom.slide.test-2') }}" alt="Universal">
-                <img src="{{ config('custom.slide.test-1') }}" alt="Universal">
-                <img src="{{ config('custom.slide.test-1') }}" alt="Universal">
-                <img src="{{ config('custom.slide.test-1') }}" alt="Universal">
             </div>
         </div>
     </div>
